@@ -1,44 +1,4 @@
+\begin{enumerate}
 
-\hline
-\textbf{Algorithm 1:} A* Algorithm
-\hline
-
-\begin{algorithmic}[1]
-\label{al:1}
-\Function{A*}{$start, goal$}
-\State $closedSet := \{ \} $ \Comment{Set of evaluated nodes}
-\State $openSet := {start}$ \Comment{Set of already discovered nodes. Initially,  the start node is discovered.}
-
-\State $bestParrent := \{ \}$ \Comment{Best previous state. Initially empty.}
-
-\State $gCost := \infty $ \Comment{The cost for travelling to any node from start node. Initialized as infinity for all unevaluated nodes.}
-
-\State $hCost := \infty $ \Comment{The cost for travelling to goal node from any node.}
-
-\State $fCost := gCost + hCost$
-
-\State $gCost[start] := 0$ 
-
-\State $hCost[start] := heuristic\_estimate (start, goal)$ \Comment{Heuristic cost estimation function between two nodes.}
-
-\State $fCost[start] := gCost[start]+hCost[start]$
-
-\While{$openSet$ is not empty}
-
-    \State $current := $ node in $openSet$ with lowest $fCost$
-    
-    \If{current = goal}
-      \State \REturn $ \ reconstruct\_path (bestParrent, current)$
-      \State \Break $ $
-    \EndIf
-    
-    \State $openSet.Remove(Current)$
-    \State $closedSet.Add(Current)$
-    \For{each neighbor of current }
-                
-    \EndFor
-
-\EndWhile
-    
-\EndFunction
-\end{algorithmic}
+\item \textbf{Explore neighbours current node:} The algorithm starts by generating the                                                                                                      
+\end{enumerate}

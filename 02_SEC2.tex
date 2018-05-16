@@ -1,8 +1,17 @@
-To represent the solution space of the problem as a graph the state of charge (SOC) of the ESS is discretized. Also the time until the prediction horizon is also represented in discrete steps. Figure \ref{fig:F1_Dis} represents a simple example of the discretized solution space.
+The proposed solution technique is designed to be implemented at the PCC(point of common coupling) of a microgrid containing distributed generation and energy storage. The objective is to optimize the use of energy storage under different pricing schemes taking advantage of DG and load forecasting. Figure \ref{fig:F1_CA} shows the top level architecture of the control strategy. As seen in the figure the BMS(battery management system) will optimize the power use from the DG plant, the utility grid and the ES. It will take in the RTP prediction, load prediction and PV prediction and generate optimum battery charge and discharge references based on the current and forecasted data.
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width = \linewidth]{figs/F1_Dis.png}
+    \includegraphics[width = \linewidth]{figs/EMS_FIG.png}
+    \caption{Controller top level architecture}
+    \label{fig:F1_CA}
+\end{figure}
+
+The solution has to take into account the current status of the system as well as the future forecasted state of the system to determine the most optimum time to charge and discharge the energy storage. To find the most cost optimum solution based on the current system status and future forecasts the optimization problem is formulated as a graph search problem. To represent the solution space of the problem as a graph the state of charge (SOC) of the ESS is discretized. Also the time until the prediction horizon is also represented in discrete steps. Figure \ref{fig:F1_Dis} represents a simple example of the discretized solution space.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width = \linewidth]{figs/F1_1_Dis.png}
     \caption{Discretizing solution space}
     \label{fig:F1_Dis}
 \end{figure}
@@ -13,13 +22,13 @@ Here, the horizontal axis represents time and vertical axis represents discrete 
 \end{equation}
 Where,
 $$
-E_{ESS} = (SOC_p - SOC_c)*ESS_{CAP}
-$$
-$$
 C_{ESS} = E_{ESS}*R_{ESS} 
+$$
+$$
+E_{ESS} = (SOC_p - SOC_c)*ESS_{CAP}
 $$
 $$
 C_{GRID}(n) = (P_{GRID}(n)*\Delta T + E_{ESS})*RTP(n)
 $$
 
-Here, $C_{EDGE}(n)$, $C_{ESS}(n)$ and $C_{GRID}(n)$ represent the cost of the Edge, cost of energy storage system and the cost of using the grid energy. $SOC_p and SOC_c$ are the states of charge of the parent and child node respectively. The parent node is the node the edge originates from and the child node is the node where the edge ends. $ESS_{CAP}$ is the total capacity of the energy storage. $R_{ESS}$ represent the \$/kwh cost of using the ESS. $P_{GRID}(n)$ is the power required from the grind at the $n^{th}$ time step. $\Delta T$ is the difference in time between the $n^{th}$ and $(n+1)^{th}$ time step. $RTP(n)$ represents the real time price of energy at the $n^{th}$ time step.
+Here, $C_{EDGE}(n)$, $C_{ESS}(n)$ and $C_{GRID}(n)$ represent the cost of the Edge, cost of energy storage system and the cost of using the grid energy. $SOC_p and SOC_c$ are the states of charge of the parent and child node respectively. The parent node is the node the edge originates from and the child node is the node where the edge ends. $ESS_{CAP}$ is the total capacity of the energy storage. $R_{ESS}$ represent the \$/kwh cost of using the ESS. $P_{GRID}(n)$ is the power required from the grind at the $n^{th}$ time step. $\Delta T$ is the difference in time between the $n^{th}$ and $(n+1)^{th}$ time step. $RTP(n)$ represents the real time price of energy at the $n^{th}$ time step. 

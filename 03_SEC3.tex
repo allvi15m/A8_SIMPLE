@@ -3,5 +3,53 @@ By defining the solution space with a combination of nodes and edges the optimiz
 The following are the main steps of the search algorithm,
 \input{_A8_algorithm.tex}
 
-The EMS recalculates the optimum path using the search algorithm every time step based on the updated data of that time step.
+The EMS recalculates the optimum path using the search algorithm every time step based on the updated data of that time step. The system status is assumed to be unchanged between the time steps.
+
+%\subsection{Cost Calculation}
+The cost of going from a parent node to a child node is calculated by combining the real cost of getting to that child node and heuristic cost of getting to the goal from that child node. The real cost of going from a parent node $p$ at time $T=t$ to a child node $c$ at time $T=t+\Delta T$ is calculated according to equation (\ref{eq:C_actual}).
+
+\begin{equation}
+\label{eq:C_actual}
+    C_{actual}(pc) =  C_{ESS}(pc)+C_{GRID}(t)+C_{best}(p)
+\end{equation}
+
+Here, $\Delta T$ represents the time between two time steps. $C_{actual}(pc)$ represent the total cost of going to the child node $c$ from parent node $p$. $C_{ESS}(pc)$ represent cost of energy storage to go from parent node $p$ to child node $c$. $C_{GRID}(t)$ is the cost of using the grid between time $T=t$ and time $T=t+\Delta T$. $C_{best}(p)$ represent the best or least cost to get to node parent node $p$.
+
+$C_{ESS}(pc)$ is calculated according to equation \ref{eq:C_ESS}.
+
+\begin{equation}
+\label{eq:C_ESS}
+C_{ESS}(pc) = |(SOC_p - SOC_c)|*ESS_{CAP}*R_{ESS} 
+\end{equation}
+Here, $SOC_p$ and $SOC_c$ represent the state of charge at parent and child node. $ESS_{CAP}$ represent the total energy capacity of the energy storage. And $R_{ESS}$ is the $\$/kWh$ cost of using the energy storage. 
+
+$C_{GRID}(t)$ is calculated according to equation \ref{eq:C_GRID}.
+
+\begin{equation}
+\label{eq:C_GRID}
+C_{GRID}(t) = E_{GRID}(t)*RTP(t)
+\end{equation}
+
+Here, $E_{GRID}(t)$ is the energy drawn from the grid between time $T=t$ and time $T=t+\Delta T$. $RTP(t)$ is the real time price between $t$ and $t+\Delta T$.
+
+The heuristic cost is calculated by assuming that whichever source has a smaller cost during a time step will supply the total demand of that time step. The heuristic cost of a node at time $T = t$ is calculated according to equation \ref{eq:C_H}.
+
+
+\begin{equation}
+\label{eq:C_H}
+C_H(t) = \sum_{n=t}^{end} D(t)*R_{best}(t)
+\end{equation}
+
+Here, $C_H(t)$ represent the heuristic cost. $D(t)$ is the demand between time $T = t$ and time $T = t+\Delta T$. $R_{best}(t)$ is the source with the smaller cost which is calculated according to equation \ref{eq:R_best}
+
+\begin{equation}
+\label{eq:R_best}
+R_{best}(t) = 
+\begin{cases}
+    R_{ESS},& \text{if } RTP(t)\geq R_{ESS}\\
+    RTP(t),              & \text{otherwise}
+\end{cases}
+\end{equation}
+
+After calculating the actual cost  $C_{actual}(pc)$ and heuristic cost $C_H(t)$ the total cost is calculated by adding  $C_{actual}(pc)$ and $C_H(t)$.
 

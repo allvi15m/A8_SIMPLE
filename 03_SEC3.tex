@@ -6,7 +6,7 @@ The following are the main steps of the search algorithm,
 The EMS recalculates the optimum path using the search algorithm every time step based on the updated data of that time step. The system status is assumed to be unchanged between the time steps.
 
 %\subsection{Cost Calculation}
-The cost of going from a parent node to a child node is calculated by combining the real cost of getting to that child node and heuristic cost of getting to the goal from that child node. The real cost of going from a parent node $p$ at time $T=t$ to a child node $c$ at time $T=t+\Delta T$ is calculated according to equation (\ref{eq:C_actual}).
+The cost of going from a parent node to a child node is calculated by combining the real cost of getting to that child node and heuristic cost of getting to the goal from that child node. The real cost of going from a parent node $p$ at time $T=t$ to a child node $c$ at time $T=t+\Delta T$ is denoted as $C_{actual}(pc)$. It is calculated according to equation (\ref{eq:C_actual}).
 
 \begin{equation}
 \label{eq:C_actual}
@@ -23,10 +23,14 @@ Here, $SOC_p$ and $SOC_c$ represent the state of charge at parent and child node
 
 \begin{equation}
 \label{eq:C_GRID}
-C_{GRID}(t) = E_{GRID}(t)*RTP(t)
+C_{GRID}(t) = 
+\begin{cases}
+   E_{GRID}(t)*RTP(t),& \text{if } E_{GRID}(t)\geq 0\\
+    E_{GRID}(t)*SP(t),& \text{if }  E_{GRID}(t) < 0
+\end{cases}
 \end{equation}
 
-Here, $E_{GRID}(t)$ is the energy drawn from the grid between time $T=t$ and time $T=t+\Delta T$. $RTP(t)$ is the real time price between $t$ and $t+\Delta T$.
+Here, $E_{GRID}(t)$ is the energy drawn from the grid between time $T=t$ and time $T=t+\Delta T$. $RTP(t)$ is the real time price between $t$ and $t+\Delta T$. $SP(t)$ is the price the utility is willing to pay the consumer for selling power between $t$ and $t+\Delta T$.
 
 The heuristic cost is calculated by assuming that whichever source has a smaller cost during a time step will supply the total demand of that time step. The heuristic cost of a node at time $T = t$ is calculated according to equation \ref{eq:C_H}.
 

@@ -18,7 +18,7 @@
 \usepackage{listings}
 \usepackage{siunitx}
 \usepackage{siunitx}
-
+\usepackage[usenames, dvipsnames]{color}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -50,7 +50,8 @@ Juan~Ospina,~\IEEEmembership{Student Member,~IEEE and}
 \maketitle                                                               
 
 \begin{abstract}
-This paper proposes a novel energy storage management (ESM) control solution designed to optimize the use of grid-connected distributed energy resources (DERs) based on on forecasting values and real-time energy prices. The optimization aims to control the charging and discharging of the energy storage so that the total cost of using energy to serve the local load is minimized. The solution proposed here is an A* search algorithm based ESM method which uses the load and PV forecasts, the real-time price (RTP) of energy and the levelized cost of energy (LCOE) of teh energy storage system (ESS) to optimize the operation of the ESS. Seven day test results are presented and compared with tow scenarios. The first comparison is with a sampling-based model predictive control based solution. The other scenario compares the A* based EMS with two other base test cases using peak day prising scheme obtained from Pacific Gas and Electric (PG\&E). The proposed control scheme uses a 24 hours prediction horizon with a 15 minute control horizon. The results show substantial cost savings over the compared schemes.
+This paper proposes a novel energy storage management (ESM) solution designed to optimize the use of grid-connected distributed energy resources (DERs) based on forecasted values of generation and load. It will also take into account real-time energy prices. The control strategy aims to control the charging and discharging of the energy storage so that the total cost of using energy to serve the local load is minimized.
+The proposed solution generated a graph from the energy storage status and available data and used A* search algorithm to find the optimum path through the grid. Seven day test results are presented and compared with two scenarios. The first scenario compares a sampling-based model predictive control (SBMPC) based solution which considers net metering with the proposed A* based ESM. The other scenario compares the A* based EMS with two base test cases using pricing scheme obtained from Pacific Gas and Electric (PG\&E) and New York Independent System Operator (NYISO) considering a sell back price of energy which is different from the price of buying energy from the grid. The results show substantial cost savings over the compared schemes.
 
 
 \end{abstract}
@@ -69,6 +70,7 @@ Distributed Energy Resources, Energy Storage System, Energy Storage Management, 
 \input{01_intro.tex}
 
 \section{Problem formulation}
+\label{formulation}
 \input{02_SEC2.tex}
 
 \section{A* based energy management system} \label{A*}
@@ -84,18 +86,8 @@ Distributed Energy Resources, Energy Storage System, Energy Storage Management, 
 
 
 \section{Conclusions}
-This paper proposed a novel EMS aimed to determine the optimal use of ESS. The EMS scheme is designed to optimize the charging and discharging of a grid connected energy storage by formulating the problem as a graph search and solving the graph search using A* search algorithm. The proposed EMS is tested using realistic data collected from the SUNGRIN project, NYISO and PG\&E. The testing show a X\% cost saving compared to the SBMPC scenario and a y\% cost saving compared to the PG\&E time of use price profile scenario. The results show that the proposed method has the capability to adopt to various changing price profile and system statues and provide a solution that reduces cost significantly. Future research will focus on developing a EMS capable of controlling multiple ESS and an additional optimum management of DERs scheme taking into account system constraints.
-
-
-
-
-
-
-
-
-
-
-
+This paper proposed a novel EMS aimed to determine the optimal use of ESS. The EMS scheme is designed to optimize the charging and discharging of a grid connected energy storage by formulating the problem as a graph search and solving the graph search using A* search algorithm. The A* based ESM scheme is tested against a SBMPO based control strategy which uses a similar concept of graph search to solve the problem.
+The testing shows a 1\% cost saving compared to the SBMPO scheme. The proposed EMS is also tested using realistic data collected from the SUNGRIN project, NYISO, and PG\&E. It also considers a sell back price different from the buying price of energy. The ESM shows a cost saving of 6.93\% to 41.79\% compared to the base test cases for this scenario. The results show that the proposed method has the capability to adapt to various changing price profile and system status and provide a solution that reduces cost significantly. Future research will focus on developing an EMS capable of controlling multiple ESS and additional  DERs taking into account system constraints.
 
 
 

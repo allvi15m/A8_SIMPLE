@@ -13,7 +13,7 @@ The cost of going from a parent node to a child node is calculated by combining 
     C_{actual}(pc) =  C_{ESS}(pc)+C_{GRID}(t)+C_{best}(p)
 \end{equation}
 
-Here, $\Delta T$ represents the time between two time steps. $C_{actual}(pc)$ represent the total cost of going to the child node $c$ from parent node $p$. $C_{ESS}(pc)$ represent cost of energy storage to go from parent node $p$ to child node $c$. $C_{GRID}(t)$ is the cost of using the grid between time $T=t$ and time $T=t+\Delta T$. $C_{best}(p)$ represent the best or least cost to get to node parent node $p$. $C_{ESS}(pc)$ is calculated according to equation \ref{eq:C_ESS}.
+Here, $\Delta T$ represents the time between two time steps. $C_{actual}(pc)$ represent the total cost of going to the child node $c$ from parent node $p$. $C_{ESS}(pc)$ represent cost of energy storage to go from parent node $p$ to child node $c$. $C_{GRID}(t)$ is the cost of using the grid between time $T=t$ and time $T=t+\Delta T$. $C_{best}(p)$ represent the best or least cost to get to the parent node $p$. $C_{ESS}(pc)$ is calculated according to equation \ref{eq:C_ESS}.
 
 \begin{equation}
 \label{eq:C_ESS}

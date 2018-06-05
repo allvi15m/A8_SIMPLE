@@ -1,9 +1,9 @@
-By defining the solution space with a combination of nodes and edges the optimization problem can be formulated as a graph search problem. At the start, the starting node is determined by the current status of the system. Then the following nodes and edges are generated using the forecasted data available. A discrete set of endpoints are set as the goals. The A*  algorithm runs for all the nodes and the node with the lowest path cost is selected as the best end node. The shortest graph search path to that node is selected as the optimum path.
+By defining the solution space with a combination of nodes and edges the optimization problem can be formulated as a graph search problem. At the start, the starting node is determined by the current status of the system. Then the following nodes and edges are generated using the forecasted data available. A discrete set of endpoints are set as the goals. The A*  algorithm runs for all the goal nodes and the node with the lowest path cost is selected as the best end node. The shortest graph search path to that node is selected as the optimum path.
 
 The following are the main steps of the search algorithm,
 \input{_A8_algorithm.tex}
 
-The EMS recalculates the optimum path using the search algorithm every time step based on the updated data of that time step. The system status is assumed to be unchanged between the time steps.
+The EMS recalculates the optimum path using the search algorithm at every time step based on the updated information. The system status is assumed to be constant between time steps.
 
 %\subsection{Cost Calculation}
 The cost of going from a parent node to a child node is calculated by combining the real cost of getting to that child node and heuristic cost of getting to the goal from that child node. The real cost of going from a parent node $p$ at time $T=t$ to a child node $c$ at time $T=t+\Delta T$ is denoted as $C_{actual}(pc)$. It is calculated according to equation (\ref{eq:C_actual}).

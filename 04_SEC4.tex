@@ -1,4 +1,4 @@
-A microgrid similar to the one shown in Figure \ref{fig:system_arch} is constructed using the load and solar data collected form feeder 2 of the SUNGRIN project \cite{SUNGRIN} for testing the algorithm described in section \ref{A*}. Table \ref{tab:solar_pv} shows the physical parameters of the PV plant and its inverter. The physical parameters of the energy storage used are shown in table \ref{tab:es}. The levelized cost of energy (LCOE)  of the energy storage system $R_{ESS}$ is calculated using equation \ref{eq:R_ESS}.
+A microgrid similar to the one shown in Fig \ref{fig:system_arch} is constructed using the load and solar data collected form a Florida feeder available in the SUNGRIN project \cite{SUNGRIN} for testing the algorithm described in Section \ref{A*}. Table \ref{tab:solar_pv} shows the physical parameters of the PV plant and its inverter. The physical parameters of the energy storage used are shown in table \ref{tab:es}. The levelized cost of energy (LCOE)  of the energy storage system $R_{ESS}$ is calculated using equation \ref{eq:R_ESS}.
 
 \begin{equation}
 \label{eq:R_ESS}
@@ -50,7 +50,7 @@ R_{ESS} = \dfrac{ES_{tot}}{Cyc\cdot ES_{Cap}\cdot DoD\cdot \eta_{r}},
 \end{table}
 %%%%%%%%ES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The load and solar profile for the testing of the algorithm were obtained from the SUNGRIN project. Figure \ref{fig:LOAD_PROFILE_8} shows the load profile of the system for eight days with average, minimum and maximum loads.
+The load and solar profile for the testing of the algorithm were obtained from the SUNGRIN project. Fig \ref{fig:LOAD_PROFILE_8} shows the load profile of the system for eight days with average, minimum and maximum loads.
 
 \begin{figure}[!ht]
     \centering
@@ -59,7 +59,7 @@ The load and solar profile for the testing of the algorithm were obtained from t
     \label{fig:LOAD_PROFILE_8}
 \end{figure}
 
-To generate the RTP profile Locational Based Marginal Pricing (LBMP) data is collected from the New York Independent System Operator (NYISO) \cite{NYISO2017}. The collected LBMPO is combined with the time of use price available at Tallahassee to generate a RTP for the test case. Figure \ref{fig:RTP_PROFILE_8} shows the real-time price profile used for the test system. The system is also tested against time of use pricing scheme available from PG\&E \cite{pgne}. Figure \ref{fig:PGNE_PRICE} shows the price profile acquired from PG\&E.
+To generate the RTP profile Locational Based Marginal Pricing (LBMP) data is collected from the New York Independent System Operator (NYISO) \cite{NYISO2017}. The collected LBMPO is combined with the time of use price available at Tallahassee to generate a RTP for the test case. Fig \ref{fig:RTP_PROFILE_8} shows the real-time price profile used for the test system. The system is also tested against time of use pricing scheme available from PG\&E \cite{pgne}. Fig \ref{fig:PGNE_PRICE} shows the price profile acquired from PG\&E.
 
 \begin{figure}[!ht]
     \centering
@@ -75,7 +75,7 @@ To generate the RTP profile Locational Based Marginal Pricing (LBMP) data is col
     \label{fig:PGNE_PRICE}
 \end{figure}
 
-The PV profile used in the system is collected from the SUNGRIN project and scaled to fit the ratings of the PV described in table \ref{tab:solar_pv}. Figure \ref{fig:PV_PROFILE_8} shows the eight-day PV profile used.
+The PV profile used in the system is collected from the SUNGRIN project and scaled to fit the ratings of the PV described in table \ref{tab:solar_pv}. Fig \ref{fig:PV_PROFILE_8} shows the eight-day PV profile used.
 
 \begin{figure}[!ht]
     \centering

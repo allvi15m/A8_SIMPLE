@@ -1,4 +1,4 @@
-For testing the algorithm described in section \ref{A*} a Florida feeder available in the SUNGRIN project \cite{SUNGRIN} is used. Fig. \ref{fig:simulation_grid} shows the whole system used for testing the algorithm. The yellow borders marks the section of the feeder modified to construct a microgrid similar to the one shown in Fig \ref{fig:system_arch}. The PV and load inside the microgrid is modeled using the load and solar data collected form the SUNGRIN project. An energy storage is included to construct the microgrid. Table \ref{tab:solar_pv} shows the physical parameters of the PV plant and its inverter. The physical parameters of the energy storage used are shown in table \ref{tab:es}. The levelized cost of energy (LCOE)  of the energy storage system $R_{ESS}$ is calculated using equation \ref{eq:R_ESS}.
+In order to test the proposed A* algorithm, an electric power system (EPS) model based a Florida feeder available in the SUNGRIN report \cite{SUNGRIN} was collected. Fig. \ref{fig:simulation_grid} shows a one-line diagram of the whole system used for testing the algorithm. The dashed borders mark the section of the feeder modified to create a microgrid similar to the one shown in Fig. \ref{fig:system_arch}. The PV and load inside the microgrid are modeled using the load and solar data collected from the SUNGRIN project. An energy storage (ES) system is included to construct the microgrid. Table \ref{tab:solar_pv} shows the physical parameters of the PV plant and its inverter. The energy storage (ES) used in the modeled microgrid has the parameters shown in table \ref{tab:es}. The levelized cost of energy (LCOE)  of the energy storage system $R_{ESS}$ is calculated using (\ref{eq:R_ESS}).
 
 \begin{figure}[!ht]
     \centering
@@ -12,6 +12,8 @@ For testing the algorithm described in section \ref{A*} a Florida feeder availab
 \label{eq:R_ESS}
 R_{ESS} = \dfrac{ES_{tot}}{Cyc\cdot ES_{Cap}\cdot DoD\cdot \eta_{r}},
 \end{equation}
+
+where $ES_{tot}$ is the total cost of the ES system, $DoD$ is the desired depth-of-discharge of the ES system, $Cyc$ is the total number of cycles under warranty at depth-of-discharge, $ES_{Cap}$ is the total energy capacity of the ES system, and $\eta_r$ is the round-trip efficiency of the system. The different $r_{ES}$ prices used in the study were obtained from publicly available data on commercial ES solutions offered by different companies. 
 
 %%%%%%%%PV%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[htb]
@@ -58,7 +60,6 @@ R_{ESS} = \dfrac{ES_{tot}}{Cyc\cdot ES_{Cap}\cdot DoD\cdot \eta_{r}},
 \end{table}
 %%%%%%%%ES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Fig \ref{fig:LOAD_PROFILE_8} shows the load profile of the system for eight days with average, minimum and maximum loads.
 
 \begin{figure}[!ht]
     \centering
@@ -67,23 +68,25 @@ Fig \ref{fig:LOAD_PROFILE_8} shows the load profile of the system for eight days
     \label{fig:LOAD_PROFILE_8}
 \end{figure}
 
-To generate the RTP profile Locational Based Marginal Pricing (LBMP) data is collected from the New York Independent System Operator (NYISO) \cite{NYISO2017}. The collected LBMPO is combined with the time of use price available at Tallahassee to generate a RTP for the test case. Fig \ref{fig:RTP_PROFILE_8} shows the real-time price profile used for the test system. The system is also tested against time of use pricing scheme available from PG\&E \cite{pgne}. Fig \ref{fig:PGNE_PRICE} shows the price profile acquired from PG\&E.
+
+Fig. \ref{fig:LOAD_PROFILE_8} shows the load profile of the system for eight days with average, minimum, and maximum load values. To generate the RTP profile, Locational Based Marginal Pricing (LBMP) data were collected from the New York Independent System Operator (NYISO) \cite{NYISO2017}. The collected LBMPO was combined with the time of use (ToU) prices available at Tallahassee to generate an RTP for the proposed test cases. Fig. \ref{fig:RTP_PROFILE_8} shows the real-time price (RTP) profiles used for testing the proposed system. The solid lines represent the price profile collected from NYISO and the dashed lines represent the price profile collected from PG\&E. The PV profile used for the test system was collected from the SUNGRIN project and scaled to fit the ratings of the PV described in Table \ref{tab:solar_pv}. Fig. \ref{fig:PV_PROFILE_8} shows the eight-day PV profile used.
+
+
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width = \linewidth]{figs/rtp_8days.png}
+    \includegraphics[width = \linewidth]{figs/Price_profiles.png}
     \caption{Eight day RTP profile NYISO}
     \label{fig:RTP_PROFILE_8}
 \end{figure}
 
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width = \linewidth]{figs/PGNE_PRICE.png}
-    \caption{Eight day RTP profile PG\&E}
-    \label{fig:PGNE_PRICE}
-\end{figure}
+% \begin{figure}[!ht]
+%     \centering
+%     \includegraphics[width = \linewidth]{figs/PGNE_PRICE.png}
+%     \caption{Eight day RTP profile PG\&E}
+%     \label{fig:PGNE_PRICE}
+% \end{figure}
 
-The PV profile used in the system is collected from the SUNGRIN project and scaled to fit the ratings of the PV described in table \ref{tab:solar_pv}. Fig \ref{fig:PV_PROFILE_8} shows the eight-day PV profile used.
 
 \begin{figure}[!ht]
     \centering

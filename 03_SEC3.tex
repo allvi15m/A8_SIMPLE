@@ -53,10 +53,10 @@ Here, $E_{GRID}(t)$ is the energy drawn from the grid between time $T=t$ and tim
 
 \begin{equation}
 \label{eq:C_H}
-C_H(t) = \sum_{n=t}^{end} D(t)*R_{best}(t)
+C_H(t) = \sum_{n=t}^{end} D(n)*R_{best}(n)
 \end{equation}
 
-Here, $C_H(t)$ represents the heuristic cost. $D(t)$ is the demand between time $T = t$ and time $T = t+\Delta T$. $R_{best}(t)$ is the source with the smaller cost which is calculated according to (\ref{eq:R_best}).
+Here, $C_H(t)$ represents the heuristic cost at time $t$. $D(n)$ is the demand between time $T = n$ and time $T = n+\Delta T$. $R_{best}(n)$ is the source with the smaller cost which is calculated according to (\ref{eq:R_best}).
 
 \begin{equation}
 \label{eq:R_best}

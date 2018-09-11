@@ -52,12 +52,12 @@ Juan~Ospina,~\IEEEmembership{Student Member,~IEEE and}
 \maketitle                                                               
 
 \begin{abstract}
-This paper proposes a novel energy storage management (ESM) solution designed to optimize the use of grid-connected distributed energy resources (DERs) based on forecasting of generation, load, and real-time energy prices. The proposed control strategy aims to control the operations of the energy storage (ES) so that the total cost of energy used to serve the local electrical load is minimized. The proposed solution uses the energy storage status and available data to generate a graph that is explored using the A* search algorithm with the objective of finding the optimum path through the grid. Seven-day test results are presented for two different scenarios. The first scenario compares the A* based ESM with two base test cases considering net metering. The other scenario compares the A* based ESM with the same base test cases considering different costs for buying power from the grid and selling power to the grid. The pricing schemes used in the testing were obtained from Pacific Gas and Electric (PG\&E) and New York Independent System Operator (NYISO). The results show substantial cost savings over the compared schemes. %\textbf{MAYBE, ADD THE \% OF COST SAVINGS OR THE BEST ONES}
+This paper proposes a novel energy storage management (ESM) solution designed to optimize the use of grid-connected distributed energy resources (DERs) based on forecasting of generation, load, and real-time energy prices. The proposed control strategy aims to control the operations of the energy storage (ES) so that the total cost of energy used to serve the local electrical load is minimized. The proposed solution uses the energy storage status and available data to generate a graph that is explored using the A* search algorithm with the objective of finding the optimum cost of energy. Seven-day offline test results are presented for two different scenarios. The first scenario compares the A* based ESM with two base test cases considering net metering. The other scenario compares the A* based ESM with the same base test cases considering different costs for buying power from the grid and selling power to the grid. Two-day real-time simulation results are also presented considering different costs for buying power from the grid and selling power to the grid. The pricing schemes used in the testing were obtained from the Pacific Gas and Electric (PG\&E) and the New York Independent System Operator (NYISO). The results show substantial cost savings over the compared schemes. %\textbf{MAYBE, ADD THE \% OF COST SAVINGS OR THE BEST ONES}
 \end{abstract}
 
 
 \begin{IEEEkeywords}
- A* Search Algorithm, Distributed Energy Resources, Energy Storage Management, Energy Storage System, Graph Search, Real-Time Pricing.
+ A* Search Algorithm, Distributed Energy Resources, Energy Storage Management, Energy Storage System, Graph Search, Real-Time Pricing, Real-Time Simulation.
 \end{IEEEkeywords}
 
 \IEEEpeerreviewmaketitle
@@ -75,8 +75,14 @@ This paper proposes a novel energy storage management (ESM) solution designed to
 \section{Test system} \label{sys}
 \input{04_SEC4.tex}
 
-\section{Simulation and results}
+\section{Offline simulation and results} \label{OFF}
 \input{05_SEC5.tex}
+
+\section{Real-time simulation and results} \label{RT}
+\input{06_real_time.tex}
+
+\section{Novelty of research} \label{Novelty}
+\input{07_novelty.tex}
 
 \section{Conclusions}
 This paper proposed a novel ESM aimed to determine the optimal cost of ES. The ESM scheme is designed to optimize the charging and discharging of grid-connected energy storage by formulating the problem as a graph search and solving the graph search using the A* search algorithm. The A* based ESM is tested using real data collected from the SUNGRIN project, NYISO, and PG\&E. It also considers both a net metering scenario and a different sell back price scenario where the buying price of energy is different from the selling price. The ESM shows a cost saving of 6.93\% to 43.48\% compared to the base test cases for the tested scenarios. The results show that the proposed method has the capability to adapt to various varying price profiles and system status and provides a solution that reduces cost significantly. Future research will focus on developing an ESM capable of controlling multiple ES and additional DERs taking into account system constraints.

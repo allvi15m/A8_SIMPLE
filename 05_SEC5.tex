@@ -11,7 +11,6 @@ All the test cases are run under two different scenarios. Scenarios one consider
 \subsection{Comparison considering net metering} \label{netmeter}
 In this scenario, the A* based EMS is compared against the two base test cases considering net metering. The NYISO RTP scheme shown in Fig. \ref{fig:RTP_PROFILE_8} is used for this comparison. The price of the energy storage is chosen as 12.6 \cent/kWh. This price is calculated based on the specifications of the Tesla Powerpack \cite{tesla_powerpack_2018}.
 
-
 Fig. \ref{fig:SBMPO_COMP_1_day} shows a zoomed view of the first day of the 7-day simulation for the A* based EMS. The solid black line in the figure represents the SOC of the energy storage, and the dotted red line represents the RTP. The dashed blue line represents the apparent demand. The left vertical axis of the graph represents the RTP of energy and the SOC of the ES. The right vertical axis represents the kWh apparent demand of the system. A negative apparent demand represents excess energy from the local generation after fulfilling the local demand. The horizontal axis represents time in hours. The arrows with the numbers showing specific points of the figure that are explained next, based on the behavior of the EMS. As observed in Fig. \ref{fig:SBMPO_COMP_1_day}, there are two peaks in price at the points 1 and 3 throughout the 24 hours window of operation. The ESM accurately anticipates the price peak in point 1 and charges the energy storage using the grid just before the peak occurs, and discharges during the price peak at point 1. It can be seen that during the peak, the apparent demand was positive and the cheapest available price for grid energy was available just before the peak. The algorithm also anticipates the next price peak at point 3 based on forecasted data and prepares the ES to discharge at that price peak by charging at the lowest RTP period at point 2. Although, there is an excess generation available from the PV in between point 2 and point 3 the opportunity cost of using the PV to charge the ES will be equal to the RTP due to net metering. So, in this case, the algorithm behaves as expected and uses the lowest possible RTP period to charge the ES and discharges during the price period when there is a high enough price peak to justify the use of the energy storage.
 
 \begin{figure}[!ht]
@@ -38,14 +37,12 @@ A* Case \% savings (Case2) & 43.48\% \\ \hline
 \end{tabular}
 \end{table}
 
-
 \begin{figure}[!ht]
     \centering
     \includegraphics[width = \linewidth]{figs/SBMPO_COMP_10_12.png}
     \caption{Full 7 day EMS response for net metering comparison case}
     \label{fig:SBMPO_COMP_10_12}
 \end{figure}
-
 
 \subsection{Test result considering different buying and selling price of energy}
 In this scenario, the proposed algorithm is tested against the two base test cases using different price for selling power back to the grid. The cases 1 and 2 are previously fixed standard control strategies based on predefined charging and discharging of the energy storage mentioned before. A* based ESM control is implemented with a control horizon of 15 minutes and a prediction horizon of 24-hours. For these test cases, it is assumed the energy storage starts at the lower bound of SOC (10 \%).
@@ -110,10 +107,7 @@ Fig. \ref{fig:VAR_10_12_4} shows the 7-day test result for the tested microgrid 
 \end{tabular}
 
 \end{table}
-%%%%%%%%CSOT%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
+%%%%%%%%CSOT%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%COMPARE_COST%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \begin{table}[htb]
